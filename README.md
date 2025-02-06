@@ -1,50 +1,22 @@
-# React + TypeScript + Vite
+# How to Set Up 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Step 1: Obtain the URL**
 
-Currently, two official plugins are available:
+You can get the URL by clicking the green code button, and select the HTTP (as this guide is not using SSH nor GitHub CLI)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Step 2: Open Terminal**
 
-## Expanding the ESLint configuration
+Open your terminal and go to the directory where you want to clone the project. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Run this command in the terminal, preferably in your code editor: (Make sure you have git installed)
+- git clone https://github.com/GitHubUser101521/user-auth-project
+- npm install
+- npx json-server db.json (the json file is provided in the root directory, check for data structure example)
+- npm run dev (or the script configured for running development in package.json)
 
-- Configure the top-level `parserOptions` property like this:
+**Step 3: Interact with the Application**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+By clicking the add member button at the top right of the table, a popup form will appear. Entering and submitting data will trigger a function to do the CRUD operation. Every data entered will be validated with **Formik and yup**. Other than that, you can still edit the data you entered by clicking the edit in the actions column, and same with the delete, you can remove datas from the table by clicking it.
+All of the avaiable data in the **json-server** will be displayed in table form that has been designed with **CSS Variable style** (See /styles/styles file).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+For ease of navigation of user data, a **search bar** is provided which will filter based on user email as a unique identifier for each user (it is case sensitive, please do keep in mind). Additionally, a **pagination** is also present below, with a highlight of the page you are currently looking at. Each page will display a maximum of 5 data.
